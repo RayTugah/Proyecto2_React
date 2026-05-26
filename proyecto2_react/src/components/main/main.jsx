@@ -3,6 +3,7 @@ import React from "react";
 import "./main.css";
 import navegacionVideo from "../../assets/navegacion.mp4";
 import aquitectura from "../../assets/aquitectura.png";
+import Formulario from "../formulario/formulario.jsx";
 import { useState,useEffect } from "react";
 const Main=()=>{
     //Definimos lo0 que queremos cargar dentro del main,que en todo caso van a ser las imagenes
@@ -10,6 +11,7 @@ const Main=()=>{
     const currentImage = images.length > 0 ? images[images.length - 1] : null;//Vamos a usar esta constante para cargar las imagenes actuales,que se cargan cada 5 segundos,lo que hacemos es cargar la ultima imagen del array de imagenes,que es la que se acaba de cargar
     //Vamos a usar el useEffect,para cargar la API de imagenes de unsplash
     useEffect(()=>{
+        //En el contexto de los hooks,useEffect se usa para manejar efectos secuendarios de cada uno de los estados,que después se renderizan,sirve para implementar pantallas de carga,actualizaciones en los datos del usuario,también para cargar APIs,en este caso lo usamos para cargar la API de imagenes de nsplash,que van a ser de tematica de boxeo
         //En este useEffect lo que vamos a hacer es añadir imagenes  que complementen con el protafolio
         const CargarImagenes=async()=>{
              try{
@@ -73,6 +75,10 @@ const Main=()=>{
     const handleDocumentationClickJSON=()=>{
         window.open("https://www.json.org/json-es.html","_blank");
         //Esta función nos conducirá a la documentación oficial de JSON
+    }
+    const handleDocumentationClickPostgreSQL=()=>{
+        window.open("https://www.postgresql.org/docs/","_blank");
+        //Esta función nos conducirá a la documentación oficial de PostgreSQL
     }
 
     return(
@@ -321,12 +327,13 @@ const Main=()=>{
                                     <img
                                         src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
                                         alt=""
+                                        onClick={handleDocumentationClickPostgreSQL}
                                     />
                                 </div>
                                 <div className="database_copy">
                                     <h3 className="database_name">PostgreSQL</h3>
                                     <p className="p_database">
-                                        PostgreSQL nos permite modelar relaciones entre entidades como usuarios, eventos y contenido, ademas de ejecutar consultas complejas con buen rendimiento.
+                                        PostgreSQL nos permite modelar relaciones entre entidades como usuarios, gamificaciones, sesiones o rutinas, ademas de ejecutar consultas complejas con buen rendimiento.
                                     </p>
                                 </div>
                             </article>
@@ -334,10 +341,13 @@ const Main=()=>{
                                 La base de datos se integra con nuestro backend a traves de un ORM, lo que nos permite manejar la logica de acceso a datos de forma mas sencilla y mantenible. Esto nos ayuda a garantizar la integridad de los datos y a optimizar el rendimiento de las consultas, especialmente a medida que el proyecto crece y se añaden nuevas funcionalidades.
                             </p>
                             <p className="p_database p_database_secondary">
-                                Ademas, la estructura relacional de la base de datos nos permite establecer conexiones claras entre diferentes tipos de informacion, como usuarios, eventos y contenido, lo que mejora la experiencia del usuario al ofrecer una navegacion mas fluida y personalizada dentro de la aplicacion.
+                                Ademas, la estructura relacional de la base de datos nos permite establecer conexiones claras entre diferentes tipos de informacion, como usuarios, gamificaciones, sesiones o rutinas  , lo que mejora la experiencia del usuario al ofrecer una navegacion mas fluida y personalizada dentro de la aplicacion.
                             </p>
                         </section>
                         </div>
+                    <section id="feedback" className="content_block">
+                        <Formulario />
+                    </section>
                </div>
                
             </section>

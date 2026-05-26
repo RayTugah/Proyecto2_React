@@ -1,0 +1,157 @@
+.formulario-container {
+	width: 100%;
+	margin-top: 0.4rem;
+	padding: clamp(1rem, 2.4vw, 1.4rem);
+	border-radius: 14px;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	background: rgba(255, 255, 255, 0.03);
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+	color: rgba(255, 240, 242, 0.95);
+	transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.formulario-container:hover {
+	background: rgba(255, 181, 92, 0.1);
+	border-color: rgba(255, 181, 92, 0.55);
+	box-shadow:
+		0 0 0 1px rgba(255, 181, 92, 0.25),
+		0 0 22px rgba(255, 181, 92, 0.22),
+		inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.formulario-container h2 {
+	margin: 0 0 0.85rem;
+	font-size: clamp(1rem, 2.2vw, 1.24rem);
+	line-height: 1.2;
+	color: #ffb3bb;
+}
+
+.formulario-container form {
+	display: grid;
+	gap: 0.75rem;
+}
+
+.formulario-container textarea {
+	width: 100%;
+	min-height: 140px;
+	resize: vertical;
+	padding: 0.8rem 0.9rem;
+	border-radius: 10px;
+	border: 1px solid rgba(255, 156, 164, 0.34);
+	background: rgba(6, 6, 6, 0.55);
+	color: rgba(255, 240, 242, 0.95);
+	font: inherit;
+	line-height: 1.5;
+	outline: none;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.formulario-container textarea::placeholder {
+	color: rgba(255, 203, 208, 0.72);
+}
+
+.formulario-container textarea:focus {
+	border-color: rgba(255, 181, 92, 0.82);
+	background: rgba(8, 8, 8, 0.7);
+	box-shadow:
+		0 0 0 1px rgba(255, 181, 92, 0.45),
+		0 0 16px rgba(255, 181, 92, 0.2);
+}
+
+.formulario-container button {
+	appearance: none;
+	border: 1px solid rgba(255, 59, 79, 0.42);
+	border-radius: 10px;
+	background: linear-gradient(180deg, rgba(255, 59, 79, 0.26), rgba(255, 59, 79, 0.14));
+	color: #ffe8eb;
+	padding: 0.6rem 0.95rem;
+	font: inherit;
+	font-weight: 600;
+	cursor: pointer;
+	transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.formulario-container button:hover {
+	transform: translateY(-1px);
+	border-color: rgba(255, 181, 92, 0.7);
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.28);
+	background: linear-gradient(180deg, rgba(255, 181, 92, 0.28), rgba(255, 181, 92, 0.12));
+}
+
+.formulario-container button:focus-visible {
+	outline: 2px solid rgba(255, 181, 92, 0.85);
+	outline-offset: 2px;
+}
+
+.formulario-container > button {
+	margin-top: 0.75rem;
+}
+
+.modal {
+	position: fixed;
+	inset: 0;
+	z-index: 9999;
+	display: grid;
+	place-items: center;
+	padding: 1rem;
+	background: rgba(0, 0, 0, 0.65);
+	backdrop-filter: blur(2px);
+}
+
+.modal-content {
+	width: min(100%, 560px);
+	max-height: min(80vh, 720px);
+	overflow: auto;
+	border-radius: 14px;
+	border: 1px solid rgba(255, 181, 92, 0.45);
+	background: linear-gradient(180deg, rgba(14, 14, 14, 0.96), rgba(8, 8, 8, 0.96));
+	box-shadow:
+		0 24px 36px rgba(0, 0, 0, 0.45),
+		0 0 24px rgba(255, 181, 92, 0.15);
+	padding: 1rem;
+}
+
+.modal-content h3 {
+	margin: 0 0 0.75rem;
+	color: #ffc0c7;
+	font-size: clamp(0.98rem, 2vw, 1.1rem);
+}
+
+.modal-content ul {
+	margin: 0;
+	padding-left: 1.2rem;
+	display: grid;
+	gap: 0.5rem;
+	color: rgba(255, 233, 236, 0.94);
+}
+
+.modal-content li {
+	line-height: 1.45;
+	word-break: break-word;
+}
+
+.modal-content button {
+	margin-top: 0.95rem;
+}
+
+@media (max-width: 700px) {
+	.formulario-container {
+		padding: 0.9rem;
+	}
+
+	.formulario-container textarea {
+		min-height: 120px;
+	}
+
+	.formulario-container button {
+		width: 100%;
+	}
+
+	.modal {
+		padding: 0.75rem;
+	}
+
+	.modal-content {
+		padding: 0.9rem;
+	}
+}
