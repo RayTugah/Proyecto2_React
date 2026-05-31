@@ -35,6 +35,16 @@ body {
   scroll-behavior: smooth;
 }
 
+html {
+  scroll-padding-top: 120px;
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 20px;
+  }
+}
+
 * {
   box-sizing: border-box;
 }

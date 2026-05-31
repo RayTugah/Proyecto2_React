@@ -47,7 +47,7 @@ const Formulario = () => {
      }
      //Una vez que hayamos definido esta lógica,vamos a crear el modal para mostrar los feedbacks guardados en la localstorage
      return (
-        <div className='formulario-container'>
+        <div className='formulario-container' id='formulario'>
             <h2>Deja tu opinión, nos importa mucho</h2>
             <form onSubmit={handleSubmit}>
                 <input ref={nameFeed} type='text' placeholder='Escribe tu nombre aquí...'/>
