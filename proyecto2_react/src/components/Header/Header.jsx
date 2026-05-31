@@ -2,15 +2,25 @@
 
 import React from "react";
 import { useState,useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Header.css";
 
 const Header =()=>{
     //Vamos a incluir un menu hamburrgesa dentro del header
      const [isOpen,setisOpen] = useState(false);//Principalmente usamos useState,para definir el estado,que después se renderizará o se cargará,este estado puede cargarse en un componente,eliminando la necedsidad de operacxiones CRUD complejas
+     
      //UseState poir lo general se usa para definir el estado de un componente,que después se renderizará
      const handleMenu=()=>{
         setisOpen(!isOpen);
         //Aquí vamos a incluir la lógica para abrir y cerrar el menu hamburrgesa
+     }
+     //Ahora definimos lo que es la navegación de pantallas,que se encuentra principalmente en el header
+     const navigate = useNavigate();
+     const handleFAQ=()=>{
+        navigate("/faq");
+     }
+     const handleHome=()=>{
+        navigate("/");
      }
         return(
             <header>
@@ -20,8 +30,8 @@ const Header =()=>{
                 </div>
                 <nav>
                     <ul>
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#" onClick={handleHome}>Inicio</a></li>
+                        <li><a href="#" onClick={handleFAQ}>FAQ</a></li>
                         <li><a href="#formulario">Contacto</a></li>
                     </ul>
                 </nav>
