@@ -4,8 +4,43 @@ import "./main.css";
 import navegacionVideo from "../../assets/navegacion.mp4";
 import aquitectura from "../../assets/aquitectura.png";
 import Formulario from "../formulario/formulario.jsx";
+import screenshotRegister from "../../assets/screenshots/register.png";
+import screenshotLogin from "../../assets/screenshots/login.png";
+import screenshotDashboard from "../../assets/screenshots/dashboard.png";
+import screenshotRoutinesList from "../../assets/screenshots/routines-list.png";
+import screenshotExerciseDetail from "../../assets/screenshots/exercise-detail.png";
+import screenshotProgress from "../../assets/screenshots/progress.png";
+import screenshotProfile from "../../assets/screenshots/profile.png";
+import screenshotRanking from "../../assets/screenshots/ranking.png";
+import screenshotAdminUsers from "../../assets/screenshots/admin-users.png";
+import screenshotEditProfile from "../../assets/screenshots/edit-profile.png";
+import screenshotMyRoutines from "../../assets/screenshots/my-routines.png";
+import screenshotNewRoutine from "../../assets/screenshots/new-routine.png";
 import { useState,useEffect } from "react";
+
+const screenshots = [
+    { image: screenshotRegister, title: "Registro", description: "Pantalla inicial para crear una cuenta en GoFight." },
+    { image: screenshotLogin, title: "Inicio de sesión", description: "Acceso de usuario con diseño oscuro y estética deportiva." },
+    { image: screenshotDashboard, title: "Panel principal", description: "Resumen rápido de racha, puntos, sesiones y rutinas." },
+    { image: screenshotRoutinesList, title: "Rutinas", description: "Listado de entrenamientos con buscador y niveles de dificultad." },
+    { image: screenshotExerciseDetail, title: "Entrenamiento", description: "Vista de ejercicios con vídeo, categoría y tiempo de ejecución." },
+    { image: screenshotProgress, title: "Progreso", description: "Seguimiento de puntos, calorías y sesiones diarias." },
+    { image: screenshotProfile, title: "Perfil", description: "Datos personales, estadísticas y acciones del usuario." },
+    { image: screenshotRanking, title: "Ranking", description: "Clasificación de jugadores ordenada por puntuación." },
+    { image: screenshotAdminUsers, title: "Gestión de usuarios", description: "Panel de administración para visualizar y gestionar usuarios." },
+    { image: screenshotEditProfile, title: "Editar perfil", description: "Modal para actualizar nombre, email y contraseña." },
+    { image: screenshotMyRoutines, title: "Mis rutinas", description: "Rutinas guardadas por el usuario con opción de eliminarlas." },
+    { image: screenshotNewRoutine, title: "Nueva rutina", description: "Creación personalizada de rutinas seleccionando ejercicios." },
+];
 const Main=()=>{
+    const screenshotsPerPage = 3;
+    const screenshotPages = [];
+
+    for (let i = 0; i < screenshots.length; i += screenshotsPerPage) {
+        screenshotPages.push(screenshots.slice(i, i + screenshotsPerPage));
+    }
+
+    const [currentScreenshotPage, setCurrentScreenshotPage] = useState(0);
     //Definimos lo0 que queremos cargar dentro del main,que en todo caso van a ser las imagenes
      const [images,setImages] = useState([]);
     const currentImage = images.length > 0 ? images[images.length - 1] : null;//Vamos a usar esta constante para cargar las imagenes actuales,que se cargan cada 5 segundos,lo que hacemos es cargar la ultima imagen del array de imagenes,que es la que se acaba de cargar
@@ -51,6 +86,28 @@ const Main=()=>{
         CargarImagenes();
     }, []);
 
+    useEffect(() => {
+        const sliderInterval = setInterval(() => {
+            setCurrentScreenshotPage((prevPage) =>
+                prevPage === screenshotPages.length - 1 ? 0 : prevPage + 1
+            );
+        }, 4500);
+
+        return () => clearInterval(sliderInterval);
+    }, [screenshotPages.length]);
+
+    const handlePreviousScreenshots = () => {
+        setCurrentScreenshotPage((prevPage) =>
+            prevPage === 0 ? screenshotPages.length - 1 : prevPage - 1
+        );
+    };
+
+    const handleNextScreenshots = () => {
+        setCurrentScreenshotPage((prevPage) =>
+            prevPage === screenshotPages.length - 1 ? 0 : prevPage + 1
+        );
+    };
+
     const handleDocumntationClickReactNative=()=>{
         window.open("https://reactnative.dev/docs/getting-started","_blank");
         //Esta función nos conducirá a la documentación oficial de React Native
@@ -91,7 +148,7 @@ const Main=()=>{
             <section id="header_section">
                 <h2 className="h1_main">Bienvenidos a la presentación de GoFight</h2>
                  <p className="p_main">Contribuitors: Ayoub Arramdani,Mario Hernandez,Agustin Linares</p>
-                      <video controls autoPlay muted loop>
+                      <video autoPlay muted loop>
                           <source src={navegacionVideo} type="video/mp4" />
                           Tu navegador no soporta la reproducción de video.
                       </video>
@@ -374,6 +431,81 @@ const Main=()=>{
                             </div>
                         </section>
                         </div>
+
+                    <section id="screenshots" className="screenshots content_block">
+                        <div className="screenshots_header">
+                            <span className="screenshots_badge">App móvil</span>
+                            <h1 className="screenshots_title">Screenshots de GoFight</h1>
+                            <p className="screenshots_intro">
+                                Estas capturas muestran el flujo principal de la aplicación: registro, inicio de sesión, panel del usuario, rutinas, progreso, perfil y herramientas de administración.
+                            </p>
+                        </div>
+
+                        <div className="screenshots_slider" aria-label="Carrusel de capturas de GoFight">
+                            <button
+                                className="screenshots_arrow screenshots_arrow_left"
+                                type="button"
+                                onClick={handlePreviousScreenshots}
+                                aria-label="Ver capturas anteriores"
+                            >
+                                ‹
+                            </button>
+
+                            <div className="screenshots_viewport">
+                                <div
+                                    className="screenshots_track"
+                                    style={{ transform: `translateX(-${currentScreenshotPage * 100}%)` }}
+                                >
+                                    {screenshotPages.map((page, pageIndex) => (
+                                        <div className="screenshots_page" key={`screenshots-page-${pageIndex}`}>
+                                            {page.map((screenshot, index) => {
+                                                const screenshotNumber = pageIndex * screenshotsPerPage + index + 1;
+
+                                                return (
+                                                    <article className="screenshot_card" key={screenshot.title}>
+                                                        <div className="screenshot_number">{String(screenshotNumber).padStart(2, "0")}</div>
+                                                        <div className="screenshot_image_wrapper">
+                                                            <img
+                                                                src={screenshot.image}
+                                                                alt={`Captura de pantalla de GoFight: ${screenshot.title}`}
+                                                                className="screenshot_image"
+                                                                loading="lazy"
+                                                            />
+                                                        </div>
+                                                        <div className="screenshot_content">
+                                                            <h2>{screenshot.title}</h2>
+                                                            <p>{screenshot.description}</p>
+                                                        </div>
+                                                    </article>
+                                                );
+                                            })}
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <button
+                                className="screenshots_arrow screenshots_arrow_right"
+                                type="button"
+                                onClick={handleNextScreenshots}
+                                aria-label="Ver capturas siguientes"
+                            >
+                                ›
+                            </button>
+                        </div>
+
+                        <div className="screenshots_dots" aria-label="Paginación de capturas">
+                            {screenshotPages.map((_, index) => (
+                                <button
+                                    type="button"
+                                    key={`screenshots-dot-${index}`}
+                                    className={`screenshots_dot ${currentScreenshotPage === index ? "screenshots_dot_active" : ""}`}
+                                    onClick={() => setCurrentScreenshotPage(index)}
+                                    aria-label={`Ver grupo de capturas ${index + 1}`}
+                                />
+                            ))}
+                        </div>
+                    </section>
                     <section id="feedback" className="content_block">
                         <Formulario />
                     </section>

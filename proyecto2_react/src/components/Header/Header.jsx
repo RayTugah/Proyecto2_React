@@ -22,7 +22,7 @@ const Header =()=>{
                     <ul>
                         <li><a href="#">Inicio</a></li>
                         <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#formulario">Contacto</a></li>
                     </ul>
                 </nav>
                     <div className="menu-hamburguesa" onClick={handleMenu}>
