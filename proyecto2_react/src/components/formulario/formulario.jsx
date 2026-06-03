@@ -1,7 +1,7 @@
 //Para poder cumplir con los requisitos tendríamos que crear un formulario para el usuario,este formulario será un feedback del portafolio
 import React, { useEffect, useRef, useState,useContext} from 'react';
 import { createPortal } from 'react-dom';
-import { FeedbackContext } from '../../context/FormularioContext';//Importamos el contexto del formulario para poder usarlo en este componente,además de esto,este contexto también se va a usar para mostrar los feedbacks en otro componente llamado "review"
+import { useFeedback } from '../../context/FormularioContext';//Importamos el contexto del formulario para poder usarlo en este componente,además de esto,este contexto también se va a usar para mostrar los feedbacks en otro componente llamado "review"
 import './formulario.css';
 //Lo que nos vamos a traer también,es el contexto del formulario,es decir las opniones del usuario a otro componente llamado "review"
 
@@ -13,7 +13,7 @@ const Formulario = () => {
     //Es decir que useRef actua desde dentro
     const [showModal, setShowModal] = useState(false);//Para mostrar el modal con los feedbacks guardados en la localstorage
     
-    const {addFeedback,feedbacks} = useContext(FeedbackContext);//Para poder usar la función de añadir feedbacks al contexto,es decir para poder añadir los feedbacks al contexto y mostrarlos en el modal,además de esto,este contexto también se va a usar para mostrar los feedbacks en otro componente llamado "review"
+    const {addFeedback,feedbacks} = useFeedback();//Traemos todo el contexto del formulario,es decir las funciones y los estados del formulario,para poder usarlos en este componente,además de esto,este contexto también se va a usar para mostrar los feedbacks en otro componente llamado "review"
     //Traemos todo el contexto del formulario,es decir las funciones y los estados del formulario,para poder usarlos en este componente,además de esto,este contexto también se va a usar para mostrar los feedbacks en otro componente llamado "review"
     
 
