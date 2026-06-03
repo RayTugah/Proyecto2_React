@@ -1,0 +1,109 @@
+/* ─── Review section ────────────────────────────────────────── */
+
+.review-container {
+    width: 100%;
+    padding: 2rem 0;
+}
+
+.review-container > h2 {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 800;
+    color: var(--text-h);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.review-container > h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+    margin-top: 0.45rem;
+    box-shadow: 0 0 10px var(--accent);
+}
+
+/* ─── Empty state ───────────────────────────────────────────── */
+
+.review-empty {
+    margin-top: 1.5rem;
+    padding: 2rem 1.5rem;
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    text-align: center;
+    color: var(--text);
+    opacity: 0.6;
+    font-size: 0.97rem;
+}
+
+/* ─── Cards grid ────────────────────────────────────────────── */
+
+.review-list {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.1rem;
+}
+
+/* ─── Single card ───────────────────────────────────────────── */
+
+.review-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.2rem 1.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    transition: border-color 0.25s, background 0.25s, transform 0.2s;
+}
+
+.review-item:hover {
+    border-color: var(--accent-border);
+    background: var(--accent-bg);
+    transform: translateY(-2px);
+}
+
+/* Avatar inicial */
+.review-item::before {
+    content: attr(data-initial);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--accent-bg);
+    border: 1.5px solid var(--accent-border);
+    color: var(--text-h);
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.review-item h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-h);
+}
+
+.review-item p {
+    margin: 0;
+    font-size: 0.93rem;
+    color: var(--text);
+    line-height: 1.6;
+    opacity: 0.88;
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+
+@media (max-width: 500px) {
+    .review-list {
+        grid-template-columns: 1fr;
+    }
+}

@@ -14,7 +14,7 @@ const Aside = () => {
         <a href="#arquitectura" className="aside_section_link">Arquitectura</a>
         <a href="#base-datos" className="aside_section_link">Base de datos</a>
         <a href="#screenshots" className="aside_section_link">Screenshots</a>
-        <a href="#feedback" className="aside_section_link">Contacto</a>
+        <a href="#feedback" className="aside_section_link">Opiniones</a>
       </nav>
     </aside>
   );

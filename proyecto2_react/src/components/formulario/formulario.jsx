@@ -52,23 +52,6 @@ const Formulario = () => {
                 <textarea ref={feedbackRef} placeholder='Escribe tu feedback aquí...'></textarea>
                 <button type='submit'>Enviar</button>
             </form>
-            <button type='button' onClick={handleShowModal}>Ver feedbacks guardados</button>
-            {showModal && createPortal(
-                <div className='modal' role='dialog' aria-modal='true' aria-label='Feedbacks guardados'>
-                    <div className='modal-content'>
-                        <h3>Feedbacks guardados</h3>
-                        <ul>
-                            {feedbacks.map((fb,index)=>(
-                                <li key={index}><strong>{fb.name}:</strong> {fb.feedback}</li>
-                                //Aquí nos van a mostrar todos los feedbacks guardados en la localStorage
-                         
-                            ))}
-                            {feedbacks.length === 0 && <li>No hay feedbacks guardados</li>}
-                        </ul>
-                        <button type='button' onClick={handleCloseModal}>Cerrar</button>
-                    </div>
-                </div>
-            , document.body)}
         </div>
      )
 }

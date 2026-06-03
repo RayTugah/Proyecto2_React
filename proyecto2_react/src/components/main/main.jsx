@@ -3,7 +3,7 @@ import React from "react";
 import "./main.css";
 import navegacionVideo from "../../assets/navegacion.mp4";
 import aquitectura from "../../assets/aquitectura.png";
-import Formulario from "../formulario/formulario.jsx";
+import Review from "../review/review.jsx";
 import screenshotRegister from "../../assets/screenshots/register.png";
 import screenshotLogin from "../../assets/screenshots/login.png";
 import screenshotDashboard from "../../assets/screenshots/dashboard.png";
@@ -507,7 +507,7 @@ const Main=()=>{
                         </div>
                     </section>
                     <section id="feedback" className="content_block">
-                        <Formulario />
+                        <Review />
                     </section>
                </div>
                
