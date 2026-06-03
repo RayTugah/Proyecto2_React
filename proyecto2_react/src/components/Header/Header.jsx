@@ -22,6 +22,9 @@ const Header =()=>{
      const handleHome=()=>{
         navigate("/");
      }
+     const handleContacto=()=>{
+        navigate("/contacto");
+        }
         return(
             <header>
                 <div className="header-brand">
@@ -32,7 +35,7 @@ const Header =()=>{
                     <ul>
                         <li><a href="#" onClick={handleHome}>Inicio</a></li>
                         <li><a href="#" onClick={handleFAQ}>FAQ</a></li>
-                        <li><a href="#formulario">Contacto</a></li>
+                        <li><a href="#" onClick={handleContacto}>Contacto</a></li>
                     </ul>
                 </nav>
                     <div className="menu-hamburguesa" onClick={handleMenu}>
